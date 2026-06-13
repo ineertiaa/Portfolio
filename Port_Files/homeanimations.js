@@ -1,0 +1,48 @@
+document.addEventListener("DOMContentLoaded", (event) => {
+    gsap.registerPlugin(ScrollTrigger);
+    let tl = gsap.timeline();
+
+    tl.from("#header", {
+        y: 30,
+        x: -30,
+        opacity: 0,
+        duration: 0.5,
+    })
+
+    tl.from(".pfp", {
+        y:30,
+        opacity: 0,
+        duration: 1.5,
+    })
+
+
+    const panels = gsap.utils.toArray(".panel");
+
+    panels.forEach((panel) => {
+        gsap.from(panel, {
+            scrollTrigger: {
+                trigger: panel,
+                start: "top 80%",
+                toggleActions: "play none none reverse",
+            },
+            y:100,
+            opacity:0,
+            duration:1,
+        })
+    });
+
+    const serveranims = gsap.utils.toArray(".server")
+
+    serveranims.forEach((servercard) => {
+        gsap.from(servercard, {
+            scrollTrigger: {
+                trigger: servercard,
+                start: "top 80%",
+                toggleActions: "play none none reverse",
+            },
+            y:100,
+            opacity:0,
+            duration:1,
+        })
+    })
+})
