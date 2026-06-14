@@ -382,7 +382,7 @@ a{
     color: white;
 }
 
-.randomquote{
+.globalclicker{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -406,23 +406,23 @@ a{
     backdrop-filter: blur(3px);
 }
 
-.randomquote h1{
+.globalclicker h1{
     font-family: "Archivo Black", sans-serif;
     text-shadow: 5px 5px 20px rgb(0, 0, 0);
 }
 
-.randomquote h2{
+.globalclicker h2{
     font-family: "Lexend Deca", sans-serif;
     text-shadow: 5px 5px 20px rgb(0, 0, 0);
 }
 
-.randomquote p{
+.globalclicker p{
     margin-top: -2px;
     margin-left: -200px;
     text-shadow: 5px 5px 20px rgb(0, 0, 0);
 }
 
-.randomquote button{
+.globalclicker button{
     width: 130px;
     height: 50px;
 
