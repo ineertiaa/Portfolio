@@ -236,6 +236,26 @@ a{
     text-shadow: 0 30px 40px rgba(0, 0, 0, 0.5);
 }
 
+#scrollprompt{
+    color: white;
+    font-family: "Archivo Black", sans-serif;
+    font-size: 25px;
+
+    position: absolute;
+    margin-top: -3px;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+    opacity: 1;
+    visibility: visible;
+
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+#scrollprompt.hidden{
+    opacity: 0;
+    visibility: hidden;
+}
+
 .servercontainer{
     display: flex;
 
@@ -246,7 +266,8 @@ a{
     align-items: center;
     justify-content: flex-start;
 
-    overflow: hidden;
+    overflow-y: hidden;
+    scrollbar-color: rgba(255, 255, 255, 0) rgba(1, 1, 1, 0);
 }
 
 .discordservers{
@@ -260,17 +281,6 @@ a{
 
     will-change: transform;
     transform: translateZ(0);
-
-    animation: spin 30s infinite linear;
-}
-
-@keyframes spin{
-    0%{
-        transform: translate3d(0, 0, 0);
-    }
-    100%{
-        transform: translate3d(-25%, 0, 0);
-    }
 }
 
 .server{
@@ -370,4 +380,59 @@ a{
 .pagebuttons{
     font-size: 40px;
     color: white;
+}
+
+.randomquote{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+
+    width: fit-content;
+    margin-top: 400px;
+    padding: 20px 20px;
+
+    border-radius: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+    
+    color: white;
+    background-color: rgba(19, 19, 19, 0.512);
+    text-shadow: 0 30px 40px rgba(0, 0, 0, 0.5);
+
+    backdrop-filter: blur(3px);
+}
+
+.randomquote h1{
+    font-family: "Archivo Black", sans-serif;
+    text-shadow: 5px 5px 20px rgb(0, 0, 0);
+}
+
+.randomquote h2{
+    font-family: "Lexend Deca", sans-serif;
+    text-shadow: 5px 5px 20px rgb(0, 0, 0);
+}
+
+.randomquote p{
+    margin-top: -2px;
+    margin-left: -200px;
+    text-shadow: 5px 5px 20px rgb(0, 0, 0);
+}
+
+.randomquote button{
+    width: 130px;
+    height: 50px;
+
+    color: white;
+    background-color: rgba(19, 19, 23, 0.5);
+    backdrop-filter: blur(3px);
+
+    border-radius: 10px;
+    border-color: #5757577c;
+    border-style: solid;
+
+    font-size: 13px;
 }

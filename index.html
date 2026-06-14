@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 
 <head>
+    <title>Home</title>
+
     <link rel="stylesheet" href="Home/homestyle.css">
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
@@ -21,7 +23,7 @@
     <img src="Images/inertiapfp.png" class="pfp">
 
     <div class="aboutme">
-        <h1>About Me</h1>
+        <h1 class="aboutmeheader">About Me</h1>
         <p id="aboutme1"></p>
         <p id="aboutme2"></p>
     </div>
@@ -86,20 +88,19 @@
 
     <h1 style='color: white; text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); font-family: "Archivo Black", "sans-serif"; text-align: center; padding-top: 600px;'>Servers You Should Join</h1>
 
+    <h1 id="scrollprompt">(Scroll for more) ></h1>
 <div class="servercontainer">
     <div class="discordservers">
         <script>
             const servers = [
-                {header: "Casual Server", id: "1479822667891871876", logo: "https://cdn.discordapp.com/icons/1479822667891871876/2596753c0467247b9a997b4fe92d3efa.webp?size=160&quality=lossless", link: "https://discord.gg/tseF5fXWPM"},
-                {header: "Coding Server", id: "1416537359360593920", logo: "https://cdn.discordapp.com/icons/1416537359360593920/0716fdf7a623271f57fe235b07f9b163.webp?size=160&quality=lossless", link: "https://discord.gg/qPTxUJsYsd"},
-                {header: "Newest Game", id: "1509974867888308344", logo: "https://cdn.discordapp.com/icons/1509974867888308344/8c88157098a48baadf027d8ce4d79ad2.webp?size=160&quality=lossless", link: "https://discord.gg/CvfghUt8JF"},
+                {header: "Casual Server", id: "1479822667891871876", logo: "https://cdn.discordapp.com/icons/1479822667891871876/2596753c0467247b9a997b4fe92d3efa.webp?size=160&quality=lossless"},
+                {header: "Coding Server", id: "1416537359360593920", logo: "https://cdn.discordapp.com/icons/1416537359360593920/0716fdf7a623271f57fe235b07f9b163.webp?size=160&quality=lossless"},
+                {header: "Newest Game", id: "1509974867888308344", logo: "https://cdn.discordapp.com/icons/1509974867888308344/8c88157098a48baadf027d8ce4d79ad2.webp?size=160&quality=lossless"},
 
             ];
 
-            const doubledServers = [...servers, ...servers, ...servers, ...servers];
-
             const container = document.querySelector('.discordservers');
-            doubledServers.forEach(server => {
+            servers.forEach(server => {
                 const panel = document.createElement('a');
                 panel.className = 'server';
                 panel.target = "_blank";
@@ -111,30 +112,24 @@
                     <img src="${server.logo}" alt="Server Logo">
                     <h2>Loading...</h2>
                 </div>
-                <p class="membercount">Loading...</p>
                 <p class="online" style="color: green; text-shadow: 0 0 10px green">Loading...</p>
                 `;
 
-            const invitecode = server.link.split('/').pop();
-
-            const url = `https://discord.com/api/v9/invites/${invitecode}?with_counts=true`;
-            const proxyurl = `https://corsproxy.io/?${encodeURIComponent(url)}`;
+            const url = `https://discord.com/api/guilds/${server.id}/widget.json`;
 
             container.appendChild(panel);
-            fetch(proxyurl)
+            fetch(url)
             .then(response => {
                 if (!response.ok) throw new Error("Unavailable")
                 return response.json();
             })
             .then(data => {
 
-                panel.querySelector("h2").innerText = data.guild.name;
-                panel.querySelector(".membercount").innerText = `${data.approximate_member_count} Members`;
-                panel.querySelector(".online").innerText = `${data.approximate_presence_count} Online`;
+                panel.querySelector("h2").innerText = data.name;
+                panel.querySelector(".online").innerText = `${data.presence_count} Online`;
             })
             .catch(error =>{
                 panel.querySelector("h2").innerText = "Widget Offline";
-                panel.querySelector(".membercount").innerText = "Error: check_settings";
                 panel.querySelector(".online").innerText = "Error: check_settings";
             });
 
@@ -145,14 +140,56 @@
     
 </div>
 
+    <script>
+        const scrollprompt = document.getElementById("scrollprompt");
+        const containertotrack = document.querySelector(".servercontainer");
+
+        containertotrack.addEventListener("scroll", function scrollhandler(){
+            if (containertotrack.scrollLeft > 0.5){
+                scrollprompt.classList.add("hidden");
+            }
+
+            containertotrack.removeEventListener("scroll", scrollhandler);
+        });
+    </script>
+
     <div class="pages">
         <nav>
             <div class="pagebuttons">
                 <h1 style="font-size: 54px; font-family: 'Archivo Black', sans-serif;">Where to next?</h1>
-                <p style="font-family: 'Micro 5', sans-serif; color: green;"><a href="Programming and Projects/programmingandprojects.html">Programming and Projects ><p></li>
+                <p style="font-family: 'Micro 5', sans-serif; color: green;"><a href="Programming and Projects/programmingandprojects.html">Programming and Projects ></a><p></li>
             </div>
         </nav>
     </div>
+
+    <div class="randomquote">
+        <h1>Random Dev Quote Generator</h1>
+        <h2 id="quote">Click 'Generate Quote'</h2>
+        <p id-="author"></p>
+        <button class="quotebutton" onclick="getquote()">Generate Quote</button>
+    </div>
+
+    <script>
+        const apiurl = "https://programming-quotesapi.vercel.app/api/random";
+
+        const quote = document.getElementById("quote");
+        const author = document.getElementById("author");
+
+        async function getquote(){
+            try{
+                quote.textContent = "Loading...";
+
+                const response = await fetch(apiurl);
+                const data = await response.json();
+
+                quote.textContent = `${data.text}`;
+                author.textContent = `- ${data.author}`;
+            } catch (error){
+                quote.textContent = "Quote Failed!";
+                author.textContent = "";
+            }
+        }
+    </script>
 
     <script src="Home/githubstats.js"></script>
 

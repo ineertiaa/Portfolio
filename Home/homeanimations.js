@@ -15,6 +15,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
         duration: 1.5,
     })
 
+    tl.from(".aboutmeheader", {
+        y:30,
+        opacity: 0,
+        duration: 1.5,
+    })
 
     const panels = gsap.utils.toArray(".panel");
     const pages = gsap.utils.toArray(".pages")
