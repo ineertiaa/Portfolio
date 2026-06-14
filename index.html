@@ -39,31 +39,28 @@
                 trigger: "#aboutme1",
                 start: "top 90%",
                 toggleActions: "play none none none",
-            })
+            }
+        });
 
-            // Force-restart the CSS animation after adding the panels so it begins reliably
             requestAnimationFrame(() => {
                 try {
-                    // temporarily disable the animation to force a reflow
                     container.style.animation = 'none';
-                    // force layout
                     void container.offsetWidth;
-                    // restore the CSS animation (removes the inline override)
                     container.style.animation = '';
                 } catch (e) {
-                    // ignore if container isn't available yet
+                    
                 }
             });
-
-        </script>
-            scrollTrigger: {
-                trigger: aboutme2,
-                start: "top 65%",
-                toggleActions: "play none none reverse",
-            },
+            
+        gsap.to("#aboutme2", {
             duration: 5,
-            text: "This website is a portfolio to show all my stuff, hopefully this could help me out in the future.",
+            text: "This website is all about me and my skills. Hopefully this could help me out in the future.",
             ease: "none",
+            scrollTrigger: {
+                trigger: "#aboutme2",
+                start: "top 60%",
+                toggleActions: "play none none none",
+            }
         });
     </script>
 
@@ -120,9 +117,11 @@
 
             const invitecode = server.link.split('/').pop();
 
+            const url = `https://discord.com/api/v9/invites/${invitecode}?with_counts=true`;
+            const proxyurl = `https://corsproxy.io/?${encodeURIComponent(url)}`;
 
             container.appendChild(panel);
-            fetch(`https://discord.com/api/v9/invites/${invitecode}?with_counts=true`)
+            fetch(proxyurl)
             .then(response => {
                 if (!response.ok) throw new Error("Unavailable")
                 return response.json();
