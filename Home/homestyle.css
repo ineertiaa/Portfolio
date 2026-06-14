@@ -1,5 +1,5 @@
 html{
-    height: 2000px;
+    height: 3000px;
 }
 
 body{
@@ -168,7 +168,7 @@ a{
 
 .aboutme p{
     width: 600px;
-    font-size: 25px;
+    font-size: 22px;
 }
 
 #github{
@@ -250,7 +250,7 @@ a{
 }
 
 .discordservers{
-    display: inline-flex;
+    display: flex;
 
     align-items: center;
     justify-content: flex-start;
@@ -258,15 +258,18 @@ a{
     width: max-content;
     height: 400px;
 
+    will-change: transform;
+    transform: translateZ(0);
+
     animation: spin 30s infinite linear;
 }
 
 @keyframes spin{
     0%{
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
     }
     100%{
-        transform: translateX(-25%);
+        transform: translate3d(-25%, 0, 0);
     }
 }
 
@@ -280,9 +283,6 @@ a{
     flex-shrink: 0;
 
     font-family: "Lexend Deca", "sans-serif";
-
-    justify-content: center;
-    align-items: center;
 
     width: 400px;
     height: 250px;
@@ -328,4 +328,46 @@ a{
 
 .membercount, .online{
     margin: 1px 0;
+}
+
+.pages{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+
+    width: fit-content;
+    margin-top: 200px;
+    padding: 20px 20px;
+
+    border-radius: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+    
+    color: white;
+    background-color: rgba(19, 19, 19, 0.512);
+    text-shadow: 0 30px 40px rgba(0, 0, 0, 0.5);
+
+    backdrop-filter: blur(3px);
+}
+
+.pages p{
+    text-shadow: 0 10px 5px rgb(0, 0, 0);
+    transition: text-shadow 0.3s ease-in-out;
+}
+
+.pages p:hover{
+    text-shadow: 0 0 5px rgb(0, 22, 0), 0 0 10px green, 0 0 10px green, 0 0 10px green;
+}
+
+.pages h1{
+    text-shadow: 0 10px 5px rgb(0, 0, 0);
+}
+
+.pagebuttons{
+    font-size: 40px;
+    color: white;
 }

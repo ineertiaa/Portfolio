@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-    <link rel="stylesheet" href="homestyle.css">
+    <link rel="stylesheet" href="Home/homestyle.css">
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
@@ -33,16 +33,29 @@
 
         gsap.to("#aboutme1", {
             duration: 5,
-            text: "Hi, I'm Inertia, a 13 year old apsiring game developer, web developer, etc.",
+            text: "Hi, I'm Inertia, a 13 year old aspiring game developer, web developer, etc.",
             ease: "none",
             scrollTrigger: {
                 trigger: "#aboutme1",
                 start: "top 90%",
                 toggleActions: "play none none none",
-            }
-        });
+            })
 
-        gsap.to(aboutme2, {
+            // Force-restart the CSS animation after adding the panels so it begins reliably
+            requestAnimationFrame(() => {
+                try {
+                    // temporarily disable the animation to force a reflow
+                    container.style.animation = 'none';
+                    // force layout
+                    void container.offsetWidth;
+                    // restore the CSS animation (removes the inline override)
+                    container.style.animation = '';
+                } catch (e) {
+                    // ignore if container isn't available yet
+                }
+            });
+
+        </script>
             scrollTrigger: {
                 trigger: aboutme2,
                 start: "top 65%",
@@ -133,14 +146,22 @@
     
 </div>
 
+    <div class="pages">
+        <nav>
+            <div class="pagebuttons">
+                <h1 style="font-size: 54px; font-family: 'Archivo Black', sans-serif;">Where to next?</h1>
+                <p style="font-family: 'Micro 5', sans-serif; color: green;"><a href="Programming and Projects/programmingandprojects.html">Programming and Projects ><p></li>
+            </div>
+        </nav>
+    </div>
 
-    <script src="githubstats.js"></script>
+    <script src="Home/githubstats.js"></script>
 
-    <script src="agecalculator.js"></script>
-    <script src="programmingsince.js"></script>
+    <script src="Home/agecalculator.js"></script>
+    <script src="Home/programmingsince.js"></script>
 
     <script src="discomode.js"></script>
 
-    <script src="homeanimations.js"></script>
-    <script src="panelhover.js"></script>
+    <script src="Home/homeanimations.js"></script>
+    <script src="Home/panelhover.js"></script>
 </body>
