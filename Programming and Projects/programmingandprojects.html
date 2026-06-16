@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pandpstyle.css">
+    <link rel="stylesheet" href="../fonts.css">
+
+    <script src="../gsap/gsap.min.js"></script>
+    <script src="../gsap/ScrollTrigger.min.js"></script>
+    <script src="../gsap/TextPlugin.min.js"></script>
+</head>
+<body>
+    <div class="crtscreen">
+        <div class="glow"></div>
+
+        <div class="terminaltext"></div>
+
+        <div class="underconstruction">
+            <h1>> Programming & Projects</h1>
+            <h1>UNDER CONSTRUCTION: PLEASE CHECK BACK LATER!</h1>
+
+            <a href="../index.html"><h3>< Go Back</h3></a>
+        </div>
+
+        <script>
+            const underconstruction = document.querySelector(".underconstruction");
+            underconstruction.hidden = true;
+
+            // weirdest variable name oat 😭 (means terminaltext + timeline)
+            let tlx2 = gsap.timeline();
+
+            const terminaltext = document.querySelector(".terminaltext");
+
+            // to-do for myself: make email newsletter
+            let terminalquotes = ["Ryan was here", "Stay tuned for my newest projects!", "Also check out twitch.tv/ineertiaa for LiveCrowd testing!"];
+
+            let selectedtquote = terminalquotes[Math.floor(Math.random() * terminalquotes.length)];
+
+            tlx2.to(terminaltext, {
+                duration: 10,
+                text: `> INITIATING INERT ENGINE... <br> > WARMING UP PORTFOLIO SYSTEMS... <br> > "${selectedtquote}" <br> > DONE`,
+                ease: "none",
+            })
+
+            tlx2.to(terminaltext, {
+                duration: 3,
+                text: "",
+                ease: "none",
+                onComplete: () => {
+                    underconstruction.hidden = false;
+                },
+            })
+            
+        </script>
+    </div>
+</body>

@@ -1,0 +1,100 @@
+body{
+    margin: 0;
+    padding: 0;
+
+    background-color: black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+    color: rgb(0, 149, 0);   
+    overflow: hidden;
+}
+
+a{
+    color: rgb(119, 149, 0);    
+}
+
+.crtscreen{
+    position: relative;
+    width: 80vw;
+    height: 40vw;
+    padding: 20px;
+    
+    overflow: auto;
+
+    border: 4px solid rgb(45, 45, 45);
+    border-radius: 5px;
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.3), inset 0 0 20px rgba(4, 0, 255, 0.2);
+
+    background-color: rgba(0, 20, 0, 0);
+}
+
+.crtscreen::before{
+    content: " ";
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: repeating-linear-gradient(to bottom, rgba(0, 255, 0, 0.1) 0px, rgba(0, 255, 0, 0.1) 2px, transparent 2px, transparent 4px);
+    background-size: 100% 0.2em;
+    pointer-events: none;
+}
+
+@keyframes flicker{
+    0%{
+        opacity: 0.95;
+    }
+    5%{
+        opacity: 0.9;
+    }
+    10%{
+        opacity: 0.85;
+    }
+    15%{
+        opacity: 0.92;
+    }
+    20%{
+        opacity: 0.98;
+    }
+    25%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.crtscreen::after{
+    content: " ";
+    
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: rgba(0, 255, 0, 0.03);
+
+    animation: flicker 0.15s infinite;
+    pointer-events: none;
+}
+
+.terminaltext{
+    white-space: pre-wrap;
+
+    font-size: 1.2em;
+    line-height: 1.4;
+}
+
+.underconstruction{
+    text-shadow: 0 0 5px rgba(0, 107, 0, 0.8);
+}

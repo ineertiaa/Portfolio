@@ -1,5 +1,5 @@
 html{
-    height: 3000px;
+    height: 3300px;
 }
 
 body{
@@ -7,7 +7,11 @@ body{
     background-size: 40px 40px;
     background-image: linear-gradient(to right, rgb(179, 179, 179), 1px, transparent 1px), linear-gradient(to bottom, rgb(179, 179, 179), 1px, transparent 1px);
 
-    animation: moveGrid 3s linear infinite
+    animation: moveGrid 3s linear infinite;
+}
+
+html, body{
+    overflow: hidden;
 }
 
 #discooverlay{
@@ -160,6 +164,10 @@ a{
     font-family: "Archivo Black", sans-serif;
     color: white;
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.aboutmeheader{
+    will-change: transform, opacity;
 }
 
 .aboutme h1{

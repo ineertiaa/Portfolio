@@ -12,14 +12,23 @@ document.addEventListener("DOMContentLoaded", (event) => {
     tl.from(".pfp", {
         y:30,
         opacity: 0,
-        duration: 1.5,
+        duration: 0.8,
+        onComplete: () => {
+            document.documentElement.style.overflow = 'auto';
+            document.body.style.overflow = 'auto';
+        }
     })
 
-    tl.from(".aboutmeheader", {
-        y:30,
+    gsap.from(".aboutmeheader", {
+        scrollTrigger: {
+            trigger: ".aboutmeheader",
+            start: "top 80%",
+            toggleActions: "play none none none",
+        },
+        y: 30,
         opacity: 0,
         duration: 1.5,
-    })
+    });
 
     const panels = gsap.utils.toArray(".panel");
     const pages = gsap.utils.toArray(".pages")
