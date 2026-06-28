@@ -188,8 +188,8 @@ a{
     justify-content: flex-start;
     position: absolute;
 
-    top: 20%;
-    right: 10%;
+    right: 50px;
+    margin-top: -300px;
 
     width: 400px;
     min-width: 400px;
