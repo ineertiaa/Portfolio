@@ -35,7 +35,8 @@ body{
 }
 
 .pages a{
-    color: white;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
     text-shadow: 0 10px 5px rgb(0, 0, 0);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
@@ -44,14 +45,15 @@ body{
 
     display: block;
     text-align: center;
-    padding: 15px;}
+    padding: 15px;
+}
 
 .pages li{
     float: left;
 }
 
 .pages a:hover{
-    text-shadow: 0 0 5px rgb(0, 22, 0), 0 0 10px rgb(40, 40, 40), 0 0 10px rgb(153, 153, 153), 0 0 10px rgb(142, 142, 142);
+    text-shadow: 0 0 5px rgb(51, 51, 51), 0 0 10px rgb(40, 40, 40), 0 0 10px rgb(153, 153, 153), 0 0 10px rgb(142, 142, 142);
 }
 
 .pages .hometext{
