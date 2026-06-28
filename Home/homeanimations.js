@@ -13,10 +13,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
         y:30,
         opacity: 0,
         duration: 0.8,
-        onComplete: () => {
-            document.documentElement.style.overflow = 'auto';
-            document.body.style.overflow = 'auto';
-        }
     })
 
     gsap.from(".aboutmeheader", {

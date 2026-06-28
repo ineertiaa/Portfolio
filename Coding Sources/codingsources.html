@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Coding Sources</title>
+    <link rel="stylesheet" href="codingsourcesstyle.css">
+    <link rel="stylesheet" href="../fonts.css">
+</head>
+<body>
+    <script src="../gsap/gsap.min.js"></script>
+    <script src="../gsap/ScrollTrigger.min.js"></script>
+    <script src="../gsap/TextPlugin.min.js"></script>
+
+    <nav class="pages">
+        <ul>
+            <li><a class="hometext" href="index.html">Home</a></li>
+            <li><a href="Programming and Projects/programmingandprojects.html">Programming & Projects</a></li>
+            <li><a href="codingsources.html">Coding Sources</a></li>
+        </ul>
+    </nav>
+
+    <h1 id="header"></h1>
+
+    <p class="info1">I started with <a href="https://www.youtube.com/watch?v=9ZEu_I-ido4" target="_blank">'How to make a Video Game in Unity' tutorial</a></p>
+
+    <p class="info2">The coding source you will use depends on the programming language you want to learn. Here are the ones I'm using so far:</p>
+
+    <nav class="sources">
+        <ul>
+            <li>Unity C# - <a href="https://www.udemy.com/share/101XCe3@4pNcNcmfO-7JnbocDBqZrQK--ngTvhTKNlkdf4MW8oa_zmTNPQKtFS3_zGIpF9M7aw==/">Udemy - 'Complete C# Unity 3D Game Development in Unity 6'</a></li>
+            <li>Python - <a href="https://www.learnpython.org" target="_blank">learnpython.org</a></li>
+            <li>HTML and CSS - <a href="https://www.w3schools.com" target="_blank">W3Schools</a></li>
+            <li>Javascript - <a href="https://leetcode.com">Leetcode</a></li>
+            <li>C++ - Self-Taught</li>
+        </ul>
+    </nav>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.registerPlugin(TextPlugin);
+
+            tl = gsap.timeline();
+
+            tl.to("#header", {
+                duration: 1.5,
+                text: "0 Friends and lots of Free-Time later...",
+                ease: "none",
+            });
+
+            tl.from(".info1", {
+                y: 30,
+                opacity: 0,
+                duration: 1.5,
+            });
+
+            gsap.from(".info2", {
+                scrollTrigger: {
+                    trigger: ".info2",
+                    start: "top 40%",
+                    toggleActions: "play none none none",
+                },
+                y: 30,
+                opacity: 0,
+                duration: 1.5,
+            });
+
+            gsap.from(".sources", {
+                scrollTrigger: {
+                    trigger: ".sources",
+                    start: "top 30%",
+                    toggleActions: "play none none none",
+                },
+                y: 30,
+                opacity: 0,
+                duration: 1.5,
+            });
+        })
+
+    </script>
+</body>
