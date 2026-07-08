@@ -13,28 +13,49 @@
     <script src="../gsap/TextPlugin.min.js"></script>
 </head>
 <body>
+    <nav class="pages">
+        <ul>
+            <li><a class="hometext" href="../index.html">Home</a></li>
+            <li><a href="Programming and Projects/programmingandprojects.html">Programming & Projects</a></li>
+            <li><a href="../Coding Sources/codingsources.html">Coding Sources</a></li>
+        </ul>
+    </nav>
+
     <div class="crtscreen">
         <div class="glow"></div>
 
         <div class="terminaltext"></div>
 
-        <div class="underconstruction">
-            <h1>> Programming & Projects</h1>
-            <h1>UNDER CONSTRUCTION: PLEASE CHECK BACK LATER!</h1>
+        <div class="everything">
+            <h1 style="font-size: 35px;">> Programming & Projects</h1>
 
-            <a href="../index.html"><h3>< Go Back</h3></a>
+            <br>
+
+            <div class="python_projects">
+                <h1>Python Projects</h1>
+
+                <h2>Rock, Paper, Scissors with Hand Tracking</h2>
+                <img src="/Users/ryanfontana/Documents/Gifs/RockPaperScissors.gif" style="width: 350px; height: auto;;" class="gif">
+            </div>
+
+            <br>
+
+            <div class="games_and_prototypes">
+                <h1>Games & Prototypes</h1>
+
+                <h2>LiveCrowd VR: Connect your stream and interact with viewers in-game</h2>
+                <img src="/Users/ryanfontana/Documents/Gifs/LC_Test.gif" style="width: 350px; height: auto;" class="gif">
+            </div>
         </div>
 
         <script>
-            const underconstruction = document.querySelector(".underconstruction");
+            const underconstruction = document.querySelector(".everything");
             underconstruction.hidden = true;
 
-            // weirdest variable name oat 😭 (means terminaltext + timeline)
             let tlx2 = gsap.timeline();
 
             const terminaltext = document.querySelector(".terminaltext");
 
-            // to-do for myself: make email newsletter
             let terminalquotes = ["Ryan was here", "Stay tuned for my newest projects!", "Also check out twitch.tv/ineertiaa for LiveCrowd testing!"];
 
             let selectedtquote = terminalquotes[Math.floor(Math.random() * terminalquotes.length)];
@@ -52,6 +73,12 @@
                 onComplete: () => {
                     underconstruction.hidden = false;
                 },
+            })
+
+            tlx2.from(".pages", {
+                duration: 0.5,
+                y: 10,
+                opacity: 0,
             })
             
         </script>

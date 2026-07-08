@@ -19,6 +19,60 @@ a{
     color: rgb(119, 149, 0);    
 }
 
+.pages{
+    position: fixed;
+
+    background-color: rgba(0, 0, 0, 0.1);
+    width: fit-content;
+    position: absolute;
+    left: 0;
+    top: 2vh;
+
+    border-radius: 0px 50px 50px 0px;
+    backdrop-filter: blur(8px);
+
+    z-index: 500;
+}
+
+.pages ul{
+    list-style-type: none;
+    margin: auto;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.pages a{
+    color: white;
+    text-shadow: 0 10px 5px rgb(0, 0, 0);
+    text-decoration: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    transition: text-shadow 0.3s ease-in-out;
+
+    display: block;
+    text-align: center;
+    padding: 15px;}
+
+.pages li{
+    float: left;
+}
+
+.pages a:hover{
+    text-shadow: 0 0 5px rgb(0, 22, 0), 0 0 10px rgb(40, 40, 40), 0 0 10px rgb(153, 153, 153), 0 0 10px rgb(142, 142, 142);
+}
+
+.pages .hometext{
+    font-family: "FreakyPaperCutouts";
+    font-size: 20px;
+    color: rgb(0, 191, 255);
+    text-shadow: 1px 2px 5px rgb(33, 32, 51);
+}
+
+.pages .hometext:hover{
+    text-shadow: 0 0 5px rgb(3, 0, 96), 0 0 10px rgb(0, 28, 131), 0 0 10px rgb(0, 83, 177), 0 0 10px rgb(0, 149, 255);
+}
+
 .crtscreen{
     position: relative;
     width: 80vw;
@@ -28,6 +82,9 @@ a{
     padding: 20px;
     
     overflow: auto;
+
+    background: repeating-linear-gradient(to bottom, rgba(0, 255, 0, 0.1) 0px, rgba(0, 255, 0, 0.1) 2px, transparent 2px, transparent 4px);
+    background-attachment: scroll;
 
     border: 4px solid rgb(45, 45, 45);
     border-radius: 5px;
@@ -45,7 +102,6 @@ a{
     right: 0;
     bottom: 0;
 
-    background: repeating-linear-gradient(to bottom, rgba(0, 255, 0, 0.1) 0px, rgba(0, 255, 0, 0.1) 2px, transparent 2px, transparent 4px);
     background-size: 100% 0.2em;
     pointer-events: none;
 }
@@ -97,6 +153,18 @@ a{
     line-height: 1.4;
 }
 
-.underconstruction{
+.everything{
     text-shadow: 0 0 5px rgba(0, 107, 0, 0.8);
+
+    width: 100%;
+    height: 100%;
+    padding: 2px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.everything .gif{
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
 }
