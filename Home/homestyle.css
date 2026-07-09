@@ -10,6 +10,12 @@ body{
     animation: moveGrid 3s linear infinite;
 }
 
+html, body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 #discooverlay{
     position: fixed;
     top: 0;
@@ -258,10 +264,11 @@ a{
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
 
-    position: absolute;
     padding-top: 10px;
     width: 90%;
-    align-items: start;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
 
     box-sizing: border-box;
 }
