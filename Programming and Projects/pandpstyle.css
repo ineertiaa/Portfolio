@@ -168,3 +168,24 @@ a{
     border-radius: 10px;
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
 }
+
+.python_projects h1{
+    color: yellow;
+    text-shadow: 3px 3px 3px rgba(164, 169, 0, 0.8);
+}
+
+.python_projects h2{
+    color: rgb(0, 98, 255);
+    text-shadow: 3px 3px 3px rgba(0, 76, 169, 0.973);
+}
+
+.games_and_prototypes h1{
+    color: white;
+    text-shadow: 3px 3px 3px rgba(217, 217, 217, 0.973);
+}
+
+.games_and_prototypes h2{
+    color: rgb(88, 88, 88);
+    text-shadow: 3px 3px 3px rgba(66, 66, 66, 0.973);
+
+}

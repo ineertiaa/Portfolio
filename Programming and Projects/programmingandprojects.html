@@ -61,7 +61,7 @@
             let selectedtquote = terminalquotes[Math.floor(Math.random() * terminalquotes.length)];
 
             tlx2.to(terminaltext, {
-                duration: 10,
+                duration: 3,
                 text: `> INITIATING INERT ENGINE... <br> > WARMING UP PORTFOLIO SYSTEMS... <br> > "${selectedtquote}" <br> > DONE`,
                 ease: "none",
             })
@@ -81,6 +81,21 @@
                 opacity: 0,
             })
             
+            let spaceCount = 0;
+
+            document.addEventListener('keydown', function(event) {
+                if (event.code === 'Space'){
+                    spaceCount++;
+                }
+                else{
+                    spaceCount = 0;
+                }
+
+                if (spaceCount === 3){
+                    window.location.href = "../Hand Tracking/tracking.html";
+                    spaceCount = 0;
+                }
+            })
         </script>
     </div>
 </body>

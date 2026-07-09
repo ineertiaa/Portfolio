@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+    <style>
+        video{
+            display: none;
+        }
+
+        canvas{
+            transform: scaleX(-1);
+            border-radius: 25px;
+            display: block;
+            margin: 0 auto;
+            margin-top: 0 auto;
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+
+    <h1 style="display: flex; justify-content: center;">Secret hand tracking page ;)</h1>
+
+    <div class="container">
+        <video id="webcam" autoplay playsinline muted></video>
+        <canvas id="output"></canvas>
+    </div>
+
+    <h1 style="display: flex; justify-content: center;"><a href="../index.html">< Go back</a></h1>
+
+    <script>
+        const video = document.getElementById("webcam");
+        const canvas = document.getElementById("output");
+        const ctx = canvas.getContext("2d")
+
+        const hands = new Hands({
+            locateFile: file => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
+        })
+
+        hands.setOptions({
+            maxNumHands: 2,
+            modelComplexity: 1,
+            minDetectionConfidence: 0.7,
+            minTrackingConfidence: 0.7
+        })
+
+        hands.onResults(onResults);
+
+        function onResults(results){
+            canvas.width = results.image.width;
+            canvas.height = results.image.height;
+
+            ctx.save();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(
+                results.image,
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+            ctx.restore();
+
+            if (results.multiHandLandmarks){
+                for (const landmarks of results.multiHandLandmarks){
+                    drawConnectors(
+                        ctx,
+                        landmarks,
+                        HAND_CONNECTIONS, {
+                            color: "#00ff00",
+                            lineWidth: 4
+                        }
+                    )
+
+                    drawLandmarks(
+                        ctx,
+                        landmarks,
+                        {
+                            color: "#ff0000",
+                            radius: 0.3
+                        }
+                    )
+                }
+            }
+        }
+
+        const camera = new Camera(video, {
+            onFrame: async () => {
+                await hands.send({
+                    image: video
+                });
+            },
+
+            width: 600,
+            height: 450
+        })
+
+        camera.start();
+    </script>
+</body>
+</html>
