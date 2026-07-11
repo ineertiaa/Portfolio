@@ -77,8 +77,8 @@ a{
     position: relative;
     width: 80vw;
     min-width: 80vw;
-    height: 40vw;
-    min-height: 40vw;
+    height: 80vh;
+    min-height: 80vh;
     padding: 20px;
     
     overflow: auto;
@@ -88,9 +88,9 @@ a{
 
     border: 4px solid rgb(45, 45, 45);
     border-radius: 5px;
-    box-shadow: 0 0 30px rgba(0, 255, 0, 0.3), inset 0 0 20px rgba(4, 0, 255, 0.2);
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
 
-    background-color: rgba(0, 20, 0, 0);
+    background-color: rgba(0, 20, 0, 1);
 }
 
 .crtscreen::before{
@@ -140,8 +140,6 @@ a{
     right: 0;
     bottom: 0;
 
-    background: rgba(0, 255, 0, 0.03);
-
     animation: flicker 0.15s infinite;
     pointer-events: none;
 }
@@ -157,11 +155,11 @@ a{
     text-shadow: 0 0 5px rgba(0, 107, 0, 0.8);
 
     width: 100%;
-    height: 100%;
     padding: 2px;
     box-sizing: border-box;
-    overflow-y: auto;
-    overflow-x: auto;
+
+    opacity: 0;
+    transition: opacity 0.5 ease;
 }
 
 .everything .gif{
@@ -187,5 +185,8 @@ a{
 .games_and_prototypes h2{
     color: rgb(88, 88, 88);
     text-shadow: 3px 3px 3px rgba(66, 66, 66, 0.973);
+}
 
+.games_and_prototypes{
+    gap: 15px;
 }

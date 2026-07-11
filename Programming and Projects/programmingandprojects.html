@@ -70,17 +70,15 @@
                 <h2>AAA Level Enemy AI (Commissioned)</h2>
                 <img src="../Gifs/AAA AI.gif" style="width: 350px; height: auto;" class="gif">
 
-                <br>
-
                 <h2>LiveCrowd VR: Connect your stream and interact with viewers in-game</h2>
                 <img src="../Gifs/LC_Test.gif" style="width: 350px; height: auto;" class="gif">
             </div>
         </div>
 
         <script>
-            const underconstruction = document.querySelector(".everything");
-            underconstruction.hidden = true;
+            gsap.registerPlugin(ScrollTrigger);
 
+            const everything = document.querySelector(".everything");
             let tlx2 = gsap.timeline();
 
             const terminaltext = document.querySelector(".terminaltext");
@@ -100,7 +98,8 @@
                 text: "",
                 ease: "none",
                 onComplete: () => {
-                    underconstruction.hidden = false;
+                    everything.style.opacity = "1";
+                    ScrollTrigger.refresh();
                 },
             })
 
@@ -109,7 +108,25 @@
                 y: 10,
                 opacity: 0,
             })
-            
+
+            tlx2.from(".python_projects", {
+                duration: 0.5,
+                y: 10,
+                opacity: 0,
+            })
+
+            gsap.from(".games_and_prototypes", {
+                scrollTrigger: {
+                    trigger: ".games_and_prototypes",
+                    scroller: ".crtscreen",
+                    start: "top 60%",
+                    toggleActions: "play none none reverse",
+                },
+                duration: 0.5,
+                y: 10,
+                opacity: 0,
+            })
+
             let spaceCount = 0;
 
             document.addEventListener('keydown', function(event) {
