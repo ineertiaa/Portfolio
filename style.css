@@ -119,6 +119,16 @@ h1, h2, h3, h4, h5, h6, p{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     text-align: center;
+}
+#public_repos{
+    color: rgb(124, 187, 124);
+    font-size: 40px;
+    text-shadow: 0px 0px 10px rgb(0, 0, 0);
+    transition: text-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+#public_repos:hover{
+    text-shadow: 1px 1px 30px green;
 }

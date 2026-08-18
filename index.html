@@ -88,7 +88,13 @@
 
         <h1 style="display: flex; align-items: center; justify-content: center; padding-top: 100px;">Github Stats</h1>
         <div class="github_stats">
-            <img src="https://ghchart.rshah.org/E8C113/ineertiaa" alt="Your GitHub Contributions Chart" style="width: 800px; height: auto;"/>
+            <h2><span id="follower_count">???</span> <br> Followers</h2>
+            <h2><a href="https://github.com/ineertiaa?tab=repositories" target="_blank" style="text-decoration: none;"><span id="public_repos">???</span></a> <br> Public Repos</h2>
+
+            <div class="commit_calendar">
+                <h1>Commits this year</h1>
+                <img src="https://ghchart.rshah.org/E8C113/ineertiaa" alt="Your GitHub Contributions Chart" style="width: 800px; height: auto;"/>
+            </div>
         </div>
 
         <script src="gsap/gsap.min.js"></script>
@@ -96,6 +102,28 @@
         <script src="gsap/ScrollTrigger.min.js"></script>
 
         <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
+
+        <script>
+            const inertuser = "ineertiaa";
+
+            fetch(`https://api.github.com/users/${inertuser}`)
+            .then(res => {
+                if (!res.ok){
+                    throw new Error(`Http error :( ${res.status}`);
+                }
+                return res.json();
+            })
+            .then(data => {
+                console.log("account login got: " + data.login)
+                console.log("followers: " + data.followers)
+                
+                document.getElementById("follower_count").innerText = data.followers;
+                document.getElementById("public_repos").innerText = data.public_repos;
+            })
+            .catch(error => {
+                console.error(`Error: ${error}`)
+            })
+        </script>
 
         <!-- hello world anim or something -->
         <script>
@@ -187,7 +215,20 @@
                 x: -50,
                 y: 200,
                 opacity: 0
-            })     
+            })
+
+            gsap.from(".github_stats", {
+                scrollTrigger: {
+                    trigger: ".github_stats",
+                    start: "top 60%",
+                    toggleActions: "play none none none"
+                },
+                duration: 2,
+                ease: "expo.out",
+                x: 0,
+                y: 200,
+                opacity: 0
+            })
         </script>
     </body>
 </html>
