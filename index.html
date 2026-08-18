@@ -15,6 +15,8 @@
             <div class="title_text">
                 <h2>Ryan 'Inertia'</h1>
                 <h1><span id="age">Age</span> Year old Backend, <span style="color: orange;">Web</span> and <span style="color: rgb(144, 63, 201);">Game</span> Developer</h1>
+                <h2>About me</h2>
+                <h3 style="text-align: center;">Hey, I'm Ryan (AKA Inertia) - a young developer. Web or Game dev, I love it all. <br> Thanks for stopping by!</h3>
             </div>
         </div>
 
@@ -90,6 +92,7 @@
         <div class="github_stats">
             <h2><span id="follower_count">???</span> <br> Followers</h2>
             <h2><a href="https://github.com/ineertiaa?tab=repositories" target="_blank" style="text-decoration: none;"><span id="public_repos">???</span></a> <br> Public Repos</h2>
+            <h2><span id="last_commit">Last commit</span></h2>
 
             <div class="commit_calendar">
                 <h1>Commits this year</h1>
@@ -122,6 +125,12 @@
             })
             .catch(error => {
                 console.error(`Error: ${error}`)
+            });
+
+            fetch(`https://api.github.com/repos/${inertuser}/canvideo/commits?per_page=1`)
+            .then(res => res.json())
+            .then(res => {
+                document.getElementById("last_commit").innerHTML = res[0].commit.message;
             })
         </script>
 
