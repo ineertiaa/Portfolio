@@ -1,0 +1,88 @@
+body{
+    height: 1500px;
+
+    background-color: rgb(30, 30, 28);
+    font-family: "Albert Sans", sans-serif;
+}
+h1, h2, h3, h4, h5, h6, p{
+    color: white;
+}
+
+.intro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 45vh;
+
+    opacity: 0;
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 45vh;
+}
+.title_text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title img{
+    box-sizing: border-box;
+    border-radius: 50px;
+    width: 300px;
+    height: auto;
+
+    margin-right: 50px;
+}
+
+.links{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.links img, svg{
+    height: 50px;
+    width: auto;
+    transition: transform 0.2s;
+}
+.links img:hover{
+    transform: scale(1.3);
+}
+.links svg{
+    transition: transform 0.2s;
+}
+.links svg:hover{
+    transform: scale(1.3);
+}
+
+.tech_stack{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 150px;
+}
+.tech_icons{
+    display: flex;
+
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+.tech_icons br{
+    display: block;
+    width: 100%;
+    content: "";
+}
+.tech_icons img{
+    height: 50px;
+    width: auto;
+}
