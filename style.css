@@ -1,5 +1,5 @@
 body{
-    height: 1500px;
+    height: 4000px;
 
     background-color: rgb(30, 30, 28);
     font-family: "Albert Sans", sans-serif;
@@ -85,4 +85,40 @@ h1, h2, h3, h4, h5, h6, p{
 .tech_icons img{
     height: 50px;
     width: auto;
+}
+
+.projects{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+.project{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.project img{
+    width: 500px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 5px 10px 10px black;
+
+    border: 2px;
+    border-color: rgb(71, 70, 66);
+    border-style: solid;
+}
+.project h3{
+    width: 600px;
+    text-align: center;
+}
+
+.github_stats{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    text-align: center;
 }
