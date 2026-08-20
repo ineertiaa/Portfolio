@@ -92,7 +92,7 @@
         <div class="github_stats">
             <h2><span id="follower_count">???</span> <br> Followers</h2>
             <h2><a href="https://github.com/ineertiaa?tab=repositories" target="_blank" style="text-decoration: none;"><span id="public_repos">???</span></a> <br> Public Repos</h2>
-            <h2><span id="last_commit">Last commit</span></h2>
+            <h2>Last Commit: <br> "<span id="last_commit">Last commit</span>"</h2>
 
             <div class="commit_calendar">
                 <h1>Commits this year</h1>
@@ -127,10 +127,23 @@
                 console.error(`Error: ${error}`)
             });
 
-            fetch(`https://api.github.com/repos/${inertuser}/canvideo/commits?per_page=1`)
-            .then(res => res.json())
+            fetch(`https://api.github.com/users/${inertuser}/repos?sort=pushed&direction=desc`)
             .then(res => {
-                document.getElementById("last_commit").innerHTML = res[0].commit.message;
+              if (!res.ok){
+                    throw new Error(`Http error :( ${res.status}`)
+                }
+
+                return res.json()
+            })
+            .then(repos => {
+                return fetch(`https://api.github.com/repos/${inertuser}/${repos[0].name}/commits?per_page=1`)
+                .then (res => res.json())
+                .then (commits => {
+                    document.getElementById("last_commit").innerText = commits[0].commit.message;
+                })
+            })
+            .catch(error => {
+                console.error(error)
             })
         </script>
 
