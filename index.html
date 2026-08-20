@@ -92,7 +92,7 @@
         <div class="github_stats">
             <h2><span id="follower_count">???</span> <br> Followers</h2>
             <h2><a href="https://github.com/ineertiaa?tab=repositories" target="_blank" style="text-decoration: none;"><span id="public_repos">???</span></a> <br> Public Repos</h2>
-            <h2>Last Commit: <br> "<span id="last_commit">Last commit</span>"</h2>
+            <h2>Last Commit: <br> "<span id="last_commit">Loading...</span>" <br> Repo: <a id="last_commit_repo">Repo</a></h2>
 
             <div class="commit_calendar">
                 <h1>Commits this year</h1>
@@ -140,6 +140,10 @@
                 .then (res => res.json())
                 .then (commits => {
                     document.getElementById("last_commit").innerText = commits[0].commit.message;
+                    const repo_text = document.getElementById("last_commit_repo");
+                    repo_text.innerText = repos[0].name;
+                    repo_text.href = repos[0].html_url;
+                    repo_text.target = "_blank";
                 })
             })
             .catch(error => {
