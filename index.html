@@ -97,6 +97,7 @@
 
         <h1 style="display: flex; align-items: center; justify-content: center; padding-top: 100px;" class="github_stats_header">Github Stats</h1>
         <div class="github_stats">
+            <h3 id="error_text" style="color: red;"></h3>
             <h2><span id="follower_count">???</span> <br> Followers</h2>
             <h2><a href="https://github.com/ineertiaa?tab=repositories" target="_blank" style="text-decoration: none;"><span id="public_repos">???</span></a> <br> Public Repos</h2>
             <h2>Last Commit: <br> "<span id="last_commit">Loading...</span>" <br> Repo: <a id="last_commit_repo">Repo</a></h2>
@@ -137,6 +138,11 @@
             .then(res => {
                 if (!res.ok){
                     throw new Error(`Http error :( ${res.status}`);
+                    document.getElementById("error_text").innerText = `Http Error :( ${res.status}`
+
+                    if (res.status == 403){
+                        document.getElementById("error_text").innerText = `Error 403. Rate limited :(`
+                    }
                 }
                 return res.json();
             })
@@ -155,6 +161,11 @@
             .then(res => {
               if (!res.ok){
                     throw new Error(`Http error :( ${res.status}`)
+                    document.getElementById("error_text").innerText = `Http Error :( ${res.status}`
+
+                    if (res.status == 403){
+                        document.getElementById("error_text").innerText = `Error 403. Rate limited :(`
+                    }
                 }
 
                 return res.json()
