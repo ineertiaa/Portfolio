@@ -88,7 +88,7 @@
 
         <h1 style="display: flex; align-items: center; justify-content: center; padding-top: 30px;">More coming very soon...</h1>
 
-        <h1 style="display: flex; align-items: center; justify-content: center; padding-top: 100px;">Github Stats</h1>
+        <h1 style="display: flex; align-items: center; justify-content: center; padding-top: 100px;" class="github_stats_header">Github Stats</h1>
         <div class="github_stats">
             <h2><span id="follower_count">???</span> <br> Followers</h2>
             <h2><a href="https://github.com/ineertiaa?tab=repositories" target="_blank" style="text-decoration: none;"><span id="public_repos">???</span></a> <br> Public Repos</h2>
@@ -257,6 +257,19 @@
                 ease: "expo.out",
                 x: -50,
                 y: 200,
+                opacity: 0
+            })
+
+            gsap.from(".github_stats_header", {
+                scrollTrigger: {
+                    trigger: ".github_stats_header",
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                },
+                duration: 2,
+                ease: "expo.out",
+                x: 0,
+                y: 100,
                 opacity: 0
             })
 
