@@ -8,22 +8,12 @@ h1, h2, h3, h4, h5, h6, p{
     color: white;
 }
 
-.intro{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 45vh;
-
-    opacity: 0;
-}
-
 .title{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-top: 45vh;
+    margin-top: 30vh;
 }
 .title_text{
     display: flex;
